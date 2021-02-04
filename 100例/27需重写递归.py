@@ -4,3 +4,13 @@
 结束条件 循环条件
 长度为0
 """
+
+def f(n, l):
+    if l == 0:
+        return
+    print(n[l - 1])
+    f(n, l - 1)
+
+s='12345'
+l=len(s)
+f(s,l)
