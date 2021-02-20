@@ -1,0 +1,8 @@
+n = [2,3,1,0,2,5,3]
+#哈希表中查找时间复杂度O(1)
+my_set=set()
+for num in n:
+    if num not in my_set:
+        my_set.add(num)
+    else:
+        print(num)
