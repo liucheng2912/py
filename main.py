@@ -1,3 +1,2 @@
-l=[]
-l+=range(10)
-print(l)
+a=[1,2,3]
+print(sum(a))
