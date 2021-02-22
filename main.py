@@ -1,3 +1,1 @@
-l=[]
-l+=range(10)
-print(l)
+print(sum(range(1, 8)))
