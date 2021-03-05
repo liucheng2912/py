@@ -1,0 +1,24 @@
+pip
+pip help    帮助
+
+pip install  安装
+pip install 包名==版本号    安装指定版本号
+pip install -i 镜像地址 --trust-host 镜像地址对应的host
+pip3 install jupyter -i http://pypi.douban.com/simple --trust-host pypi.douban.com
+
+pip install -U 包名  升级包
+pip uninstall 卸载
+pip list 列出所有的包文件
+pip download 下载包
+pip search requests 搜索包
+
+虚拟环境
+1、创建环境
+python -m venv liucheng
+2、激活环境
+win
+liucheng\Scripts\activate.bat
+unix、mac
+source liucheng/bin/activate
+3、退出虚拟环境
+deactivate

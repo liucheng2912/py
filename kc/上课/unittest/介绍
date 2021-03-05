@@ -1,0 +1,46 @@
+单元测试
+一个单元测试用于判断某个特定条件或者场景下某个特定函数的行为
+
+单元测试测试覆盖类型
+语句覆盖
+    通过设计一定量的测试用例，保证被测试的方法每一行代码都会被执行一遍
+    运行测试用例的时候被击中的代码行即称为被覆盖的语句
+条件覆盖
+    和判断语句类似，关注的是每个值的结果，比如if(a>1 and b==0) 会关注a>1 b==0的true和false
+判断覆盖
+    运行测试用例的过程被击中的判定语句 关注整条判断语句的结果 比如 if(a>1 and b==0) 只关注整行的true或者false
+路径覆盖
+    覆盖所有可能执行的路径
+
+unittest
+提供了test cases、 test suites、test fixtures、test runner相关的组件
+编写规范
+    测试模块首先import unittest
+    测试类必须继承 unittest.TestCase
+    测试方法必须以test_ 开头
+test一定要小写
+
+setUp用来为测试准备环境 tearDown用来清理环境
+若想在所有case执行之前准备一次环境，并在所有case执行结束之后再清理环境 用setUpClass() tearDownClass() 比如数据库连接和销毁
+如果想有些方法不再本次执行使用@unittest.skip
+测试方法的命名：以test开头
+各种执行-单一用例,全部
+
+执行测试用例的顺序
+    以test后面的字母顺序执行 例如test_a test_b test_c
+
+多个测试用例的集合就是测试套件，通过测试套件来管理多个测试用例
+1、unittest.main()  执行所有的用例
+2、加入容器中执行
+    suite=unittest.TestSuite()
+    suite.addTest(TestMethod("test_01"))
+    suite.addTest(TestMethod("test_02"))
+    unittest.TextTestRunner().run(suite)
+3、执行某个测试类 将测试类添加到测试套件里
+    suite1=unittest.TestLoader().loadTestsFromTestCase(Search)
+    suite3=unittest.TestSuite([suite1])
+    unittest.TextTestRunner(verbosity=2).run(suite3)
+4、匹配某个目录下所有以test开头的py文件，执行这些文件下的所有测试用例
+    test_dir = "./"
+    discover = unittest.defaultTestLoader.discover(test_dir, pattern="test*.py")
+    unittest.TextTestRunner(verbosity=2).run(discover)

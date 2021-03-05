@@ -1,5 +1,10 @@
-def order1(l1,target):
-    for i in l1:
-        if i==target:
+#顺序查找
+#复杂度O(n)
+def ordersearch(item):
+    alist=list['']
+    n=len(item)
+    for i in range(n):
+        if alist[i]==item:
             return True
-    return False
+        else:
+            return False
