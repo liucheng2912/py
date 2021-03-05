@@ -3,26 +3,17 @@
     滑动窗口
 '''
 def le(s):
-    from collections import defaultdict
-    lookup = defaultdict(int)
-    start=0
-    end=0
-    max_len=0
-    counter=0
-    while end<len(s):
-        if lookup[s[end]]>0:
-            counter+=1
-        lookup[s[end]]+=1
-        end+=1
-        while counter>0:
-            if lookup[s[start]]>1:
-                counter-=1
-            lookup[s[start]]-=1
-            start+=1
-        max_len=max(max_len,end-start)
-    return max_len
+    occ=set()
+    ans=0
+    rk=-1
+    for i in range(len(s)):
+        while i!=0:
+            occ.remove(s[i-1])
+        while rk<len(s) and rk[i+1] not in occ:
+            occ.add(s[rk+1])
+            rk+=1
+        ans = max(ans,rk-i+1)
+    return ans
 
-
-s='au'
+s = "dvdf"
 print(le(s))
-
