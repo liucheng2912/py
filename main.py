@@ -1,22 +1,20 @@
-def isValid(s: str):
-    if len(s) % 2 == 1:
-        return False
+import collections
 
-    pairs = {
-        ")": "(",
-        "]": "[",
-        "}": "{",
-    }
-    stack = list()
-    for ch in s:
-        if ch in pairs:
-            if not stack or stack[-1] != pairs[ch]:
-                return False
-            stack.pop()
-        else:
-            stack.append(ch)
+from Class1 import ListNode
+class Solution:
+    def levelOrder(self,root):
+        queue=[root]
+        res=[]
+        while queue:
+            size=len(queue)
+            level=[]
+            for _ in range(size):
+                cur=queue.pop(0)
+                if not cur:continue
+                level.append(cur.val)
+                queue.append(cur.left)
+                queue.append(cur.right)
+            if level:
+                res.append(level)
+        return res
 
-    return not stack
-
-s = "([])"
-print(isValid(s))
